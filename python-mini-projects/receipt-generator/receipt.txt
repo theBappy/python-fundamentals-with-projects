@@ -1,0 +1,9 @@
+*************************  Template Store  *************************
+
+1. 	 pizza of code Azsx, quantity of 2 
+ billed 456x2 units = 
+ 	 $912.0 
+
+
+!!! Your bill total is only Rs. 912.0. Thanks for shopping with us !!!
+
