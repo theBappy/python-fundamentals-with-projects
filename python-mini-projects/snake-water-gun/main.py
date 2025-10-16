@@ -1,73 +1,116 @@
-
+# A small project of Snake, Water and Gun game developed using python
 
 import random
-from rich import print as rprint
 
-if __name__ == "__main__":
-    CHOICES = ["s", "w", "g"]
+print("GAME NAME - Snake, Water and Gun")
+print(
+    "GAME RULES :\n[ + ]. Choose s for Snake, w for Water and g for Gun\n[ + ].If any game draws, it'll be counted\n[ + ]. If you pressed other than s, w and g key, it'll be counted."
+)
+print(
+    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-"
+)
+ready = input(
+    "So, Be ready the game is starting\n=========Press Enter to start========="
+)
 
-    CHANCE = 10
-    NO_OF_CHANCE = 0
-    COMPUTER_POINT = 0
-    HUMAN_POINT = 0
+totalchances = 3
+user_score = 0
+computer_score = 0
+gameno = 0
 
-    print(" \t \t \t \t Snake,Water,Gun Game\n \n")
-    rprint(
-        "[yellow]s[/yellow] for snake, [blue]w[/blue] for water, [green]g[/green] for gun \n"
-    )
+lst = ["s", "w", "g"]
+print("[ s ] - Snake\n[ w ] - Water\n[ g ] - Gun\n")
 
-    # making the game in while
-    while NO_OF_CHANCE < CHANCE:
-        user_choice = input("Enter your choice >> ")
-        computer_choice = random.choice(CHOICES)
+while gameno < totalchances:
+    gameno = gameno + 1
+    print(f"=========Game {gameno} is starting=========")
 
-        if user_choice.lower() not in CHOICES:
-            rprint("[red]Wrong input!![/red] \n")
-        elif user_choice == computer_choice:
-            rprint("Tie!! 0 point to each \n ")
-        else:
-            if user_choice.lower() == "s":
-                if computer_choice == "g":
-                    COMPUTER_POINT += 1
-                    WINNER = "Computer"
-                elif computer_choice == "w":
-                    HUMAN_POINT += 1
-                    WINNER = "Human"
-            elif user_choice.lower() == "w":
-                if computer_choice == "s":
-                    COMPUTER_POINT += 1
-                    WINNER = "Computer"
-                elif computer_choice == "g":
-                    HUMAN_POINT += 1
-                    WINNER = "Human"
-            elif user_choice.lower() == "g":
-                if computer_choice == "s":
-                    HUMAN_POINT += 1
-                    WINNER = "Human"
-                elif computer_choice == "w":
-                    COMPUTER_POINT += 1
-                    WINNER = "Computer"
-            rprint(
-                f"You guessed [yellow]{user_choice.lower()}[/yellow] and Computer guessed [cyan]{computer_choice}.[/cyan]\n"
-            )
-            rprint(
-                f"[{'green' if WINNER == 'Human' else 'red'}]{WINNER} wins 1 point[/{'green' if WINNER == 'Human' else 'red'}] \n"
-            )
+    user = input("CHOOSE WISELY:= ")
+    computer = random.choice(lst)
 
-        NO_OF_CHANCE += 1
-        rprint(f"{CHANCE - NO_OF_CHANCE} chance(s) are left out of {CHANCE} chances.\n")
+    if user == "s" and computer == "s":
+        print(f"Your Choice = {user} and Computer Choice = {computer}")
+        print("!!! Match Draw !!!")
+        print(f"===> Your Score: {user_score}")
+        print(f"===> Computer Score: {computer_score}")
 
-    print("Game over!")
+    elif user == "s" and computer == "w":
+        user_score = user_score + 1
+        print(f"Your Choice = {user} and Computer choice = {computer}")
+        print("!!! You WON !!!")
+        print(f"===> Your Score: {user_score}")
+        print(f"===> Computer Score: {computer_score}")
 
-    if COMPUTER_POINT == HUMAN_POINT:
-        rprint("[yellow]Tie![/yellow]")
+    elif user == "s" and computer == "g":
+        computer_score = computer_score + 1
+        print(f"Your Choice = {user} and Computer choice = {computer}")
+        print("!!! Computer WON !!!")
+        print(f"===> Your Score: {user_score}")
+        print(f"===> Computer Score: {computer_score}")
 
-    elif COMPUTER_POINT > HUMAN_POINT:
-        rprint("[red]Computer won and you lost.[/red]")
+    elif user == "w" and computer == "w":
+        print(f"Your Choice = {user} and Computer Choice = {computer}")
+        print("!!! Match Draw !!!")
+        print(f"===> Your Score: {user_score}")
+        print(f"===> Computer Score: {computer_score}")
+
+    elif user == "w" and computer == "s":
+        computer_score = computer_score + 1
+        print(f"Your Choice = {user} and Computer Choice = {computer}")
+        print("!!! Computer WON !!!")
+        print(f"===> Your Score: {user_score}")
+        print(f"===> Computer Score: {computer_score}")
+
+    elif user == "w" and computer == "g":
+        user_score = user_score + 1
+        print(f"Your Choice = {user} and Computer Choice = {computer}")
+        print("!!! You WON !!!")
+        print(f"===> Your Score: {user_score}")
+        print(f"===> Computer Score: {computer_score}")
+
+    elif user == "g" and computer == "g":
+        print(f"Your Choice = {user} and Computer Choice = {computer}")
+        print("!!! Match Draw !!!")
+        print(f"===> Your Score: {user_score}")
+        print(f"===> Computer Score: {computer_score}")
+
+    elif user == "g" and computer == "s":
+        user_score = user_score + 1
+        print(f"Your Choice = {user} and Computer Choice = {computer}")
+        print("!!! You WON !!!")
+        print(f"===> Your Score: {user_score}")
+        print(f"===> Computer Score: {computer_score}")
+
+    elif user == "g" and computer == "w":
+        computer_score = computer_score + 1
+        print(f"Your Choice = {user} and Computer Choice = {computer}")
+        print("!!! Computer WON !!!")
+        print(f"===> Your Score: {user_score}")
+        print(f"===> Computer Score: {computer_score}")
 
     else:
-        rprint("[green]You won and Computer lost.[/green]")
+        print("(*)---Please choose correct option---(*)")
 
-    rprint(
-        f"[green]Your points: {HUMAN_POINT}\tComputer points: {COMPUTER_POINT}[/green]"
+print("|*|*|*|*|*|*|*| GAME OVER |*|*|*|*|*|*|*|")
+print(
+    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-"
+)
+print(
+    f"Your Total Score is : {user_score} and Computer's Total Score is : {computer_score}"
+)
+if user_score > computer_score:
+    print(
+        "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-"
     )
+    print(
+        "Hurrey!!! You Won the Series\nHere is a gift for you.... ❤❤❤🎂🎂🎂\nSee you next time.Bye......"
+    )
+else:
+    print(
+        "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-"
+    )
+    print(
+        "Sorry!!! You lose the series\nDon't worry you'll still get a gift.... 😝LOL😝 Come next time "
+    )
+
+out = input("<=== Press any key to exit ===>")
